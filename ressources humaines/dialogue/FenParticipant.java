@@ -20,7 +20,8 @@ import java.text.SimpleDateFormat;
 //permet d établir le lien avec la classe GestionDemandes
 import controle.GestionDemandes;
 import entite.*;
-public class FenParticipant extends JFrame {
+public class FenParticipant extends JFrame 
+{
 	private static final long serialVersionUID = 1L;
 	// propriété pour établir le lien avec la classe GestionDemandes
 	private GestionDemandes gestionBD = new GestionDemandes();  
@@ -87,6 +88,7 @@ public class FenParticipant extends JFrame {
 	private JButton Btn_Rechercher = null;
 	private boolean estRechercher=false;
 	private JComboBox<String> cbx_catchambre_nuit2 = null;
+	
 	private void regroupeboutons()
 	{
 		groupeboutons.add(radiobtn_licencie);
@@ -100,6 +102,7 @@ public class FenParticipant extends JFrame {
 		groupeOuiNon.add(radiobtn_Non);
 		groupeOuiNon.clearSelection();
 	}
+	
 	private void enregistrerintervenant(){
 		int numatelier=Integer.parseInt(""+((String)cbx_atelier.getSelectedItem()).charAt(0));
 		String Statut="I";
@@ -136,6 +139,7 @@ public class FenParticipant extends JFrame {
 		JOptionPane.showMessageDialog(null, "Inscription Intervenant effectuée.",
 				"", JOptionPane.ERROR_MESSAGE);
 	}
+	
 	private void enregistrerlicencie(){
 		String Statut="L";
 		SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
@@ -162,7 +166,9 @@ public class FenParticipant extends JFrame {
  	 	if(!gestionBD.enregistrerLicencie(txt_nom.getText(),txt_prenom.getText(),txt_adr1.getText(), txt_adr2.getText(), txt_cp.getText(), txt_ville.getText(), txt_mail.getText(),Statut, dteins,dtearr,txt_clewifi.getText(), txt_nolicence.getText(), idqualite))
 		return;
 	}
-	private void enregistrerbenevole(){
+	
+	private void enregistrerbenevole()
+	{
 		String Statut="B";
 		SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
 		String madtenais = txt_dtenais.getText();
@@ -177,6 +183,7 @@ public class FenParticipant extends JFrame {
 	 	if(!gestionBD.enregistrerBenevole(txt_nom.getText(),txt_prenom.getText(),txt_adr1.getText(), txt_adr2.getText(), txt_cp.getText(), txt_ville.getText(), txt_mail.getText(),Statut, txt_nolicence_B.getText(), dtenais))
 		return;
 	}
+	
 	private void raz()
 	{
 		txt_nom.setText("");
@@ -201,7 +208,9 @@ public class FenParticipant extends JFrame {
 		regroupeboutons();
 		
 	}
-	private Boolean verification(){
+	
+	private Boolean verification()
+	{
 		/* cas d'insertion dans la base de données */
 		if ((!getRadiobtn_Benevole().isSelected())&&(!getRadiobtn_licencie().isSelected())&&(!getRadiobtn_Intervenant().isSelected())){
 			JOptionPane.showMessageDialog(null,"Vous devez choisir un type de participant" 
@@ -220,17 +229,20 @@ public class FenParticipant extends JFrame {
 		}
 		return(true);
 	}
+	
 	/*** This is the default constructor */
 	public FenParticipant() {
 		super();
 		initialize();
 	}
+	
 	/** This method initializes this @return void */
 	private void initialize() {
 		this.setSize(810, 750);
 		this.setContentPane(getJContentPrincipal());
 		this.setTitle("Maison des Ligues : Inscription ");
 	}
+	
 	/*** This method initializes jContentPane @return javax.swing.JPanel */
 	private JPanel getJContentPrincipal() {
 		if (jContentPrincipal == null) {
@@ -259,6 +271,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentPrincipal;
 	}
+	
 	private JPanel getjContentIdentite() {
 		if (jContentIdentite == null) {
 			jContentIdentite = new JPanel();
@@ -303,6 +316,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentIdentite;
 	}
+	
 	private JPanel getjContentInscriptionLicencie() {
 		if (jContentInscriptionLicencie == null) {
 			jContentInscriptionLicencie = new JPanel();
@@ -341,6 +355,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentInscriptionLicencie;
 	}
+	
 	private JPanel getjContentInscriptionBenevole() {
 		if (jContentInscriptionBenevole == null) {
 			jContentInscriptionBenevole = new JPanel();
@@ -367,6 +382,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentInscriptionBenevole;
 	}
+	
 	private JPanel getjContentInscriptionIntervenant() {
 		if (jContentInscriptionIntervenant == null) {
 			jContentInscriptionIntervenant = new JPanel();
@@ -386,6 +402,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentInscriptionIntervenant;
 	}
+	
 	private JPanel getjContentNuitée() {
 		if (jContentNuitée == null) {
 			jContentNuitée = new JPanel();
@@ -424,6 +441,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentHotel;
 	}
+	
 	private JPanel getjContentChoixParticipant() {
 		if (jContentChoixParticipant == null) {
 			jContentChoixParticipant = new JPanel();
@@ -437,6 +455,7 @@ public class FenParticipant extends JFrame {
 		}
 		return jContentChoixParticipant;
 	}
+	
 	/*** This method initializes btn_quitter@return javax.swing.JButton	 */
 	private JButton getBtn_quitter() {
 		if (btn_quitter == null) {
@@ -460,6 +479,7 @@ public class FenParticipant extends JFrame {
 		}
 		return btn_quitter;
 	}
+	
 	/*** This method initializes radiobtn_Intervenant @return javax.swing.JRadioButton*/
 	private JRadioButton getRadiobtn_Benevole() {
 		if (radiobtn_Benevole == null) {
@@ -477,6 +497,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_Benevole;
 	}
+	
 	private JRadioButton getRadiobtn_HotelOui() {
 		if (radiobtn_Oui == null) {
 			radiobtn_Oui = new JRadioButton();
@@ -490,6 +511,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_Oui;
 	}
+	
 	private JRadioButton getRadiobtn_HotelNon() {
 		if (radiobtn_Non== null) {
 			radiobtn_Non = new JRadioButton();
@@ -503,6 +525,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_Non;
 	}
+	
 	private JRadioButton getRadiobtn_AnimateurOui() {
 		if (radiobtn_Animateur == null) {
 			radiobtn_Animateur = new JRadioButton();
@@ -516,6 +539,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_Animateur;
 	}
+	
 	private JRadioButton getRadiobtn_AnimateurNon() {
 		if (radiobtn_NonAnimateur == null) {
 			radiobtn_NonAnimateur = new JRadioButton();
@@ -529,6 +553,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_NonAnimateur;
 	}
+	
 	private JRadioButton getRadiobtn_Intervenant() {
 		if (radiobtn_Intervenant == null) {
 			radiobtn_Intervenant = new JRadioButton();
@@ -545,6 +570,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_Intervenant;
 	}
+	
 	private JRadioButton getRadiobtn_licencie() {
 		if (radiobtn_licencie == null) {
 			radiobtn_licencie = new JRadioButton();
@@ -561,6 +587,7 @@ public class FenParticipant extends JFrame {
 		}
 		return radiobtn_licencie;
 	}
+	
 	/*** This method initializes btn_embaucher	@return javax.swing.JButton	 */
 	private JButton getBtn_embaucher() {
 		if (btn_embaucher == null) {
@@ -580,6 +607,7 @@ public class FenParticipant extends JFrame {
 		}
 		return btn_embaucher;
 	}
+	
 	/*** This method initializes btn_ok	@return javax.swing.JButton	*/
 	private JButton getBtn_ok() {
 		if (btn_ok == null) {
@@ -677,6 +705,7 @@ public class FenParticipant extends JFrame {
 		}
 		return btn_ok;
 	}
+	
 	/*** This method initializes btn_annuler @return javax.swing.JButton */
 	private JButton getBtn_annuler() {
 		if (btn_annuler == null) {
@@ -695,6 +724,7 @@ public class FenParticipant extends JFrame {
 		}
 		return btn_annuler;
 	}
+	
 	/*** This method initializes txt_nom @return javax.swing.JTextField	 */
 	private JTextField getTxt_nom() {
 		if (txt_nom == null) {
@@ -709,6 +739,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_nom;
 	}
+	
 	/*** This method initializes txt_prenom	@return javax.swing.JTextField */
 	private JTextField getTxt_prenom() {
 		if (txt_prenom == null) {
@@ -717,6 +748,8 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_prenom;
 	}
+	
+	
 	private JTextField getTxt_adr1() {
 		if (txt_adr1 == null) {
 			txt_adr1 = new JTextField();
@@ -724,6 +757,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_adr1;
 	}
+	
 	private JTextField getTxt_adr2() {
 		if (txt_adr2 == null) {
 			txt_adr2 = new JTextField();
@@ -731,6 +765,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_adr2;
 	}
+	
 	private JTextField getTxt_cp() {
 		if (txt_cp == null) {
 			txt_cp = new JTextField();
@@ -738,6 +773,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_cp;
 	}
+	
 	private JTextField getTxt_ville() {
 		if (txt_ville == null) {
 			txt_ville = new JTextField();
@@ -745,6 +781,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_ville;
 	}
+	
 	private JTextField getTxt_mail() {
 		if (txt_mail == null) {
 			txt_mail = new JTextField();
@@ -770,6 +807,7 @@ public class FenParticipant extends JFrame {
 		});
 		return check_Nuitdu12;
 	}
+	
 	private JCheckBox getCheck_Nuitdu13() {
 		if (check_Nuitdu13 == null) {
 			check_Nuitdu13 = new JCheckBox();
@@ -778,6 +816,7 @@ public class FenParticipant extends JFrame {
 		}
 		return check_Nuitdu13;
 	}
+	
 	/*** This method initializes txt_clewifi @return javax.swing.JTextField	*/
 	private JTextField getTxt_clewifi() {
 		if (txt_clewifi == null) {
@@ -787,6 +826,7 @@ public class FenParticipant extends JFrame {
 		return txt_clewifi;
 		
 	}
+	
 	/*** This method initializes txt_dteinsc @return javax.swing.JTextField	*/
 	private JTextField getTxt_dteinsc() {
 		if (txt_dteinsc == null) {
@@ -799,6 +839,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_dteinsc;
 	}
+	
 	private JTextField getTxt_dtearr() {
 		if (txt_dtearr == null) {
 			txt_dtearr = new JTextField();
@@ -809,6 +850,7 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_dtearr;
 	}
+	
 	/*** This method initializes txt_idqual @return javax.swing.JTextField */
 	private JComboBox<String> getCbx_qualite() {
 		if (cbx_qualite == null) {
@@ -852,6 +894,7 @@ public class FenParticipant extends JFrame {
 		}
 		return cbx_atelier;
 	}
+	
 	private JComboBox<String> getcbx_hotel_nuit2() {
 		if (cbx_hotel_nuit2 == null) {
 			cbx_hotel_nuit2 = new JComboBox<String>();
@@ -871,6 +914,7 @@ public class FenParticipant extends JFrame {
 		}
 		return cbx_hotel_nuit2;
 	}
+	
 	private JComboBox<String> getcbx_hotel_nuit1() {
 		if (cbx_hotel_nuit1 == null) {
 			cbx_hotel_nuit1 = new JComboBox<String>();
@@ -885,6 +929,7 @@ public class FenParticipant extends JFrame {
 			}
 		return cbx_hotel_nuit1;
 	}
+	
 	private JComboBox<String> getcbx_catchambre_nuit2() {
 		if (cbx_catchambre_nuit2 == null) {
 			cbx_catchambre_nuit2 = new JComboBox<String>();
@@ -904,6 +949,7 @@ public class FenParticipant extends JFrame {
 		}
 		return cbx_catchambre_nuit2;
 	}
+	
 	private JComboBox<String> getcbx_catchambre_nuit1() {
 		if (cbx_catchambre_nuit1 == null) {
 			cbx_catchambre_nuit1 = new JComboBox<String>();
@@ -923,6 +969,7 @@ public class FenParticipant extends JFrame {
 		}
 		return cbx_catchambre_nuit1;
 	}
+	
 	private JTextField getTxt_nolicence() {
 		if (txt_nolicence == null) {
 			txt_nolicence = new JTextField();
@@ -930,6 +977,8 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_nolicence;
 	}
+	
+	
 	private JTextField getTxt_nolicence_B() {
 		if (txt_nolicence_B == null) {
 			txt_nolicence_B = new JTextField();
@@ -947,7 +996,6 @@ public class FenParticipant extends JFrame {
 		}
 		return txt_dtenais;
 	}
-	
 	
 	/*** This method initializes Btn_Rechercher	@return javax.swing.JButton	*/
 	private JButton getBtn_Rechercher() {
@@ -968,6 +1016,7 @@ public class FenParticipant extends JFrame {
 		}
 		return Btn_Rechercher;
 	}
+	
 	/*** This method initializes txt_idqual @return javax.swing.JTextField */
 	private JComboBox<String> getCbx_qualite_B() {
 		if (cbx_qualite_B == null) {
@@ -989,6 +1038,5 @@ public class FenParticipant extends JFrame {
 		}
 		return cbx_qualite_B;
 	}
-
 
 }  //  @jve:decl-index=0:visual-constraint="16,5"
